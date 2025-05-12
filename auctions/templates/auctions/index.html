@@ -3,5 +3,14 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    TODO
+    <!-- Display a list of active auction listings -->
+    <ul>
+        {% for auction in auctions %}
+            <li>
+                <a href="{% url 'display_auction' auction.id %}">{{ auction.title }}</a> - {{ auction.description }}
+            </li>
+        {% empty %}
+            <li>No active listings available.</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h1>Auction Item</h1>
+<ul>
+    
+
+            <h2>{{ auction.name }}</h2>
+            <h3>{{ auction.description }}</h3>
+
+        {% if bids %}
+            <li>
+                <h3>Bids:</h3>
+                <ul>
+                    {% for bid in bids %}
+                        <li>{{ bid.user }}: ${{ bid.amount }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li>No bids yet.</li>
+        {% endif %}
+
+        {% if comments %}
+            <li>
+                <h3>Comments:</h3>
+                <ul>
+                    {% for comment in comments %}
+                        <li><strong>{{ comment.user }}:</strong> {{ comment.text }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li>No comments yet.</li>
+        {% endif %}
+
+</ul>
+{% endblock %}
